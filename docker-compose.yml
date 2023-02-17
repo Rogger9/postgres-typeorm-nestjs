@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15.2-alpine3.17
+    ports:
+      - ${DB_PORT}:5432
+    # volumes:
+    #   - ${LOCAL_VOLUME}:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    container_name: postgres-db
