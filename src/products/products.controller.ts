@@ -1,7 +1,6 @@
 import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Patch, Post, Query } from '@nestjs/common'
 import { PaginationDto } from 'src/common/dtos/pagination.dto'
-import { CreateProductDto } from './dto/create-product.dto'
-import { UpdateProductDto } from './dto/update-product.dto'
+import { CreateProductDto, UpdateProductDto } from './dto'
 import { ProductsService } from './products.service'
 
 @Controller('products')
@@ -20,7 +19,7 @@ export class ProductsController {
 
   @Get(':term')
   findOne(@Param('term') term: string) {
-    return this.productsService.findOne(term)
+    return this.productsService.findOnePlain(term)
   }
 
   @Patch(':id')
